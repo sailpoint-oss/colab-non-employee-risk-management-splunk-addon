@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ziptestdata1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/bin/ta_sailpoint_nerm_auditevent_add_on/aob_py3/importlib_resources/tests/zipdata02/ziptestdata.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -20,14 +20,14 @@ def use_current(now, old):
     ret = False
 
     try:
-        current_time = datetime.datetime.strptime(now, '%Y-%m-%dT%H:%M:%S.%fZ')
+        current_time = datetime.datetime.strptime(now, '%Y-%m-%dT%H:%M:%S.%f%z')
     except ValueError:
-        current_time = datetime.datetime.strptime(now, '%Y-%m-%dT%H:%M:%SZ')
+        current_time = datetime.datetime.strptime(now, '%Y-%m-%dT%H:%M:%S%z')
 
     try:
-        old_time = datetime.datetime.strptime(old, '%Y-%m-%dT%H:%M:%S.%fZ')
+        old_time = datetime.datetime.strptime(old, '%Y-%m-%dT%H:%M:%S.%f%z')
     except ValueError:
-        old_time = datetime.datetime.strptime(old, '%Y-%m-%dT%H:%M:%SZ')
+        old_time = datetime.datetime.strptime(old, '%Y-%m-%dT%H:%M:%S%z')
 
     diff = current_time - old_time
     delta_days = diff.days
@@ -112,17 +112,19 @@ def build_search_payload(helper, checkpoint_time):
     helper.log_info(f'checkpoint_time {query_checkpoint_time} search_delay_time {query_search_delay_time}')
 
     # Search criteria - retrieve all audit events since the checkpoint time, sorted by created date
-    search_payload = {
-        "audit_events": {
-            "filters": {
-                "subject_type": "Profile",
-                "created_at":f">{query_checkpoint_time} AND created:<{query_search_delay_time}"
-            },
-            "limit": 100,
-            "sort": "created_at",
-            "order": "asc"
-        }
+    search_payload ={
+    "audit_events": {
+        "filters": {
+            "created_at": {
+                "lt": f"{query_search_delay_time}",
+                "gt": f"{query_checkpoint_time}"
+            }
+        },
+        "limit": 100,
+        "sort": "created_at",
+        "order": "asc",
     }
+}
 
     return search_payload
 
@@ -137,7 +139,6 @@ def build_query_params(count, limit, offset):
         limit = max_limit
 
     query_params = {
-        "count": count,
         "offset": offset,
         "limit": limit
     }
@@ -216,6 +217,7 @@ def collect_events(helper, ew):
         helper.log_error(f"audit_events_url: {audit_events_url}")
 
         # Initiate request
+        helper.log_info(f"Audit Events URL is {audit_events_url}")
         response = get_search_events_response(helper, audit_events_url, headers, search_payload,
                                               use_proxy)
 

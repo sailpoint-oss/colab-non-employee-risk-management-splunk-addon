@@ -12,3 +12,32 @@ modtime = 1729089171.538593000
 owner = eric.panico
 version = 9.3.1
 modtime = 1729089172.098166000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23TA-sailpoint-nerm-auditevent-add-on%23data%2Finputs%2Fsailpoint_nerm_auditevent%3Asailpoint_nerm%60%60splunk_cred_sep%60%601%3A]
+owner = eric.panico
+version = 9.3.1
+modtime = 1730930439.591043000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23TA-sailpoint-nerm-auditevent-add-on%23data%2Finputs%2Fsailpoint_nerm_auditevent%3Asailpoint_nerm%60%60splunk_cred_sep%60%602%3A]
+owner = eric.panico
+version = 9.3.1
+modtime = 1730930439.656728000
+
+[inputs/sailpoint_nerm_auditevent%3A%2F%2Fsailpoint_nerm]
+owner = eric.panico
+version = 9.3.1
+modtime = 1730993677.528594000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23TA-sailpoint-nerm-auditevent-add-on%23configs%2Fconf-ta_sailpoint_nerm_auditevent_add_on_settings%3Aadditional_parameters%60%60splunk_cred_sep%60%601%3A]
+owner = eric.panico
+version = 9.3.1
+modtime = 1730993665.133640000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23TA-sailpoint-nerm-auditevent-add-on%23configs%2Fconf-ta_sailpoint_nerm_auditevent_add_on_settings%3Aadditional_parameters%60%60splunk_cred_sep%60%602%3A]
+owner = eric.panico
+version = 9.3.1
+modtime = 1730993665.158933000
+
+[ta_sailpoint_nerm_auditevent_add_on_settings/additional_parameters]
+version = 9.3.1
+modtime = 1730993665.175752000

@@ -1,2 +1,2 @@
 [sailpoint_nerm_auditevent://<name>]
-global_account =
+tenant_name = Enter name of the tenant.

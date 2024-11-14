@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 
 # Function to test if the url is https.
 def is_https(helper, nerm_url):
+    helper.log_info("INFO Entering is_https().")
     scheme = urlparse(nerm_url).scheme
     if scheme.lower() == 'https':
         helper.log_info("INFO NERM URL is HTTPS.")
@@ -27,6 +28,7 @@ def is_https(helper, nerm_url):
 
 # Function to build a header for NERM requests.
 def build_header(helper, api_key):
+    helper.log_info("INFO Entering build_header().")
     if api_key:
         # If api_key exists then construct auth.
         return {
@@ -41,8 +43,8 @@ def build_header(helper, api_key):
 
 # Function to get checkpoint time.
 def get_checkpoint_time(helper, content):
+    helper.log_info("INFO Entering get_checkpoint_time().")
     content = [x.strip() for x in content]
-    helper.log_info(f"content: {content}")
 
     checkpoint_time = None
     # Set checkpoint time to what was saved in the checkpoint file
@@ -53,9 +55,11 @@ def get_checkpoint_time(helper, content):
 
 # Function to get audit events response.
 def get_nerm_audit_events_response(
-        helper, nerm_audit_events_url, headers, search_payload, use_proxy
+        helper, nerm_audit_events_url, headers, query_params, search_payload, use_proxy
 ):
-    # Check if search_events_url is https.
+    helper.log_info("INFO Entering get_nerm_audit_events_response().")
+
+    # Check if nerm_audit_events_url is https.
     if not is_https(helper, nerm_audit_events_url):
         helper.log_info("INFO Search Events URL is not HTTPS.")
         return False
@@ -63,6 +67,7 @@ def get_nerm_audit_events_response(
     response = helper.send_http_request(
         nerm_audit_events_url,
         "POST",
+        parameters=query_params,
         payload=search_payload,
         headers=headers,
         cookies=None,
@@ -77,12 +82,14 @@ def get_nerm_audit_events_response(
 
 # Function to construct payload.
 def build_search_payload(helper, limit, offset, checkpoint_time=None):
+    helper.log_info("INFO Entering build_search_payload().")
+
     # Search criteria - retrieve all audit events since the checkpoint time, sorted by created date
     search_payload = {
         "audit_events": {
-            "offset": 0,
+            "offset": offset,
             "sort": "created_at",
-            "limit": 100,
+            "limit": limit,
             "order": "asc",
             "filters": {
                 "subject_type": "Profile",
@@ -96,38 +103,37 @@ def build_search_payload(helper, limit, offset, checkpoint_time=None):
 
 
 # Function to construct query parameters.
-def build_query_params():
+def build_query_params(helper):
+    helper.log_info("INFO Entering build_query_params().")
     query_params = {"metadata": True}
 
     return query_params
 
 
 def validate_input(helper, definition):
+    helper.log_info("INFO Entering validate_input().")
     pass
 
 
 def collect_events(helper, ew):
+    helper.log_info("INFO Entering collect_events().")
+
     # Get information about NERM from the input configuration
     # Information on how to attain these values can be found on community.sailpoint.com
-    
-      #Get data input configuration
-    global_account = helper.get_arg('global_account')
-    tenant_name = global_account['username']
-    tenant_url= global_account['tenant_url']
-    api_key= global_account['password']
+
+    tenant_name = helper.get_arg("tenant_name")
+    tenant_url = helper.get_global_setting("tenant_url")
+    api_key = helper.get_global_setting("api_key")
 
     nerm_audit_events_url = "{}/api/audit_events/query".format(tenant_url)
 
-    # Check if nerm_url is https.
+    # Check if nerm_audit_events_url is https.
     if not is_https(helper, nerm_audit_events_url):
         return False
 
     # Read the timestamp from the checkpoint file, and create the checkpoint file if necessary The checkpoint file
-    # contains the ISO datetime of the 'created' field of the last event seen in the previous execution of the
-    # script. If the checkpoint time was greater than a day in the passed, use current datetime to avoid massive load
-    # if search disabled for long period of time Note the filename is prepended with the clientId value, so a new or
-    # different client will have a different checkpoint file
-
+    # contains datetime of 'created_at' field of the last event seen in the previous execution of the
+    # script.
     checkpoint_file = os.path.join(os.environ['SPLUNK_HOME'], 'etc', 'apps',
                                    'TA-sailpoint-nerm-auditevent-add-on', 'tmp',
                                    tenant_name + "_checkpoint.txt")
@@ -150,13 +156,12 @@ def collect_events(helper, ew):
 
     # Build the header.
     headers = build_header(helper, api_key)
-    print(f"Headers: {headers}")
 
     audit_events = []
     partial_set = False
 
     # Number of Events to return per call to the search API
-    limit = 100  # Max number of results to return. Default is 250.
+    limit = 100  # Max number of results to return. Default is 100.
     offset = 0
     new_checkpoint_time = None
 
@@ -166,22 +171,19 @@ def collect_events(helper, ew):
             break
 
         # Get the query parameters.
-        query_params = build_query_params()
-        helper.log_info(f"query_params: {query_params}")
-        
+        query_params = build_query_params(helper)
+
         # Search criteria - retrieve all audit events since the checkpoint time, sorted by created date.
         search_payload = build_search_payload(helper, limit, offset, checkpoint_time)
-        helper.log_info(f"search_payload: {search_payload}")
-        
 
         # Initiate request
-        response = get_nerm_audit_events_response(helper, nerm_audit_events_url, headers, search_payload,
-                                              use_proxy)
+        response = get_nerm_audit_events_response(helper, nerm_audit_events_url, headers, query_params, search_payload,
+                                                  use_proxy)
 
         if response.ok:
             resp_obj = response.json()
             if resp_obj is not None:
-                helper.log_info(len(resp_obj["audit_events"]))
+
                 x_total_count = len(resp_obj["audit_events"])
                 try:
                     if x_total_count < limit:
@@ -189,9 +191,9 @@ def collect_events(helper, ew):
                         partial_set = True
 
                     # Add this set of results to the audit events array
-                    helper.log_info(f"Length of audit events before extending {len(audit_events)}")
+
                     audit_events.extend(resp_obj["audit_events"])
-                    helper.log_info(f"Length of audit events after extending {len(audit_events)}")
+
                     current_last_event = audit_events[-1]
                     checkpoint_time = current_last_event["created_at"]
 
@@ -203,21 +205,15 @@ def collect_events(helper, ew):
             # hard exit
             return 0
 
-
     # Iterate the audit events array and create Splunk events for each one
-    helper.log_info(f"Length of audit events before indexing {len(audit_events)}")
     if len(audit_events) > 0:
-        temp = 1
+
         for audit_event in audit_events:
-            helper.log_info(f"running for {temp} time")
-            helper.log_info(f"Audit event at {temp} {audit_event}")
-            
             data = json.dumps(audit_event)
-            event = helper.new_event(data=data, time=None, host=nerm_audit_events_url, index=helper.get_output_index(),
+            event = helper.new_event(data=data, time=None, host=tenant_name, index=helper.get_output_index(),
                                      source=helper.get_input_type(), sourcetype=helper.get_sourcetype(), done=True,
                                      unbroken=True)
             ew.write_event(event)
-            temp += 1
 
         # Get the created date of the last AuditEvent in this run and save it as the checkpoint time in the
         # checkpoint file

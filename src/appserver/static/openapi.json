@@ -24,33 +24,6 @@
     ],
     "components": {
         "schemas": {
-            "account": {
-                "type": "object",
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "username": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string",
-                        "format": "password"
-                    }
-                }
-            },
-            "account_without_name": {
-                "type": "object",
-                "properties": {
-                    "username": {
-                        "type": "string"
-                    },
-                    "password": {
-                        "type": "string",
-                        "format": "password"
-                    }
-                }
-            },
             "proxy": {
                 "type": "object",
                 "properties": {
@@ -145,6 +118,30 @@
                     }
                 }
             },
+            "additional_parameters": {
+                "type": "object",
+                "properties": {
+                    "tenant_url": {
+                        "type": "string"
+                    },
+                    "api_key": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                }
+            },
+            "additional_parameters_without_name": {
+                "type": "object",
+                "properties": {
+                    "tenant_url": {
+                        "type": "string"
+                    },
+                    "api_key": {
+                        "type": "string",
+                        "format": "password"
+                    }
+                }
+            },
             "sailpoint_nerm_auditevent": {
                 "type": "object",
                 "properties": {
@@ -157,7 +154,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "global_account": {
+                    "tenant_name": {
                         "type": "string"
                     },
                     "disabled": {
@@ -178,7 +175,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "global_account": {
+                    "tenant_name": {
                         "type": "string"
                     },
                     "disabled": {
@@ -202,7 +199,7 @@
                     "index": {
                         "type": "string"
                     },
-                    "global_account": {
+                    "tenant_name": {
                         "type": "string"
                     }
                 }
@@ -216,229 +213,6 @@
         }
     },
     "paths": {
-        "/TA_sailpoint_nerm_auditevent_add_on_account": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Get list of items for account",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/account_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Get list of items for account",
-                "deprecated": false
-            },
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Create item in account",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/account_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Create item in account",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "$ref": "#/components/schemas/account"
-                            }
-                        }
-                    },
-                    "required": false
-                },
-                "deprecated": false
-            },
-            "parameters": [
-                {
-                    "name": "output_mode",
-                    "in": "query",
-                    "required": true,
-                    "description": "Output mode",
-                    "schema": {
-                        "type": "string",
-                        "enum": [
-                            "json"
-                        ],
-                        "default": "json"
-                    }
-                }
-            ]
-        },
-        "/TA_sailpoint_nerm_auditevent_add_on_account/{name}": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Get account item details",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/account_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Get account item details",
-                "deprecated": false
-            },
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Update account item",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/account_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Update account item",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "$ref": "#/components/schemas/account_without_name"
-                            }
-                        }
-                    },
-                    "required": false
-                },
-                "deprecated": false
-            },
-            "delete": {
-                "responses": {
-                    "200": {
-                        "description": "Delete account item",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "entry": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "name": {
-                                                        "type": "string"
-                                                    },
-                                                    "content": {
-                                                        "$ref": "#/components/schemas/account_without_name"
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "description": "Delete account item",
-                "deprecated": false
-            },
-            "parameters": [
-                {
-                    "name": "name",
-                    "in": "path",
-                    "required": true,
-                    "description": "The name of the item to operate on",
-                    "schema": {
-                        "type": "string"
-                    }
-                },
-                {
-                    "name": "output_mode",
-                    "in": "query",
-                    "required": true,
-                    "description": "Output mode",
-                    "schema": {
-                        "type": "string",
-                        "enum": [
-                            "json"
-                        ],
-                        "default": "json"
-                    }
-                }
-            ]
-        },
         "/TA_sailpoint_nerm_auditevent_add_on_settings/proxy": {
             "get": {
                 "responses": {
@@ -598,6 +372,97 @@
                         "application/x-www-form-urlencoded": {
                             "schema": {
                                 "$ref": "#/components/schemas/logging"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "deprecated": false
+            },
+            "parameters": [
+                {
+                    "name": "output_mode",
+                    "in": "query",
+                    "required": true,
+                    "description": "Output mode",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "default": "json"
+                    }
+                }
+            ]
+        },
+        "/TA_sailpoint_nerm_auditevent_add_on_settings/additional_parameters": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get list of items for additional_parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/additional_parameters_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Get list of items for additional_parameters",
+                "deprecated": false
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Create item in additional_parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/additional_parameters_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Create item in additional_parameters",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/additional_parameters"
                             }
                         }
                     },

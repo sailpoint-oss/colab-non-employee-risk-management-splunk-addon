@@ -46,8 +46,8 @@ class ModInputsailpoint_nerm_auditevent(modinput_wrapper.base_modinput.BaseModIn
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("global_account", title="Global Account",
-                                         description="",
+        scheme.add_argument(smi.Argument("tenant_name", title="Tenant Name",
+                                         description="Enter name of the tenant.",
                                          required_on_create=True,
                                          required_on_edit=False))
         return scheme
@@ -65,7 +65,6 @@ class ModInputsailpoint_nerm_auditevent(modinput_wrapper.base_modinput.BaseModIn
 
     def get_account_fields(self):
         account_fields = []
-        account_fields.append("global_account")
         return account_fields
 
     def get_checkbox_fields(self):

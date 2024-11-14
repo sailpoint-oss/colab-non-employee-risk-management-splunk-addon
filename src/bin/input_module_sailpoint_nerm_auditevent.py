@@ -81,13 +81,12 @@ def get_nerm_audit_events_response(
 
 
 # Function to construct payload.
-def build_search_payload(helper, limit, offset, checkpoint_time=None):
+def build_search_payload(helper, limit, checkpoint_time=None):
     helper.log_info("INFO Entering build_search_payload().")
 
     # Search criteria - retrieve all audit events since the checkpoint time, sorted by created date
     search_payload = {
         "audit_events": {
-            "offset": offset,
             "sort": "created_at",
             "limit": limit,
             "order": "asc",
@@ -162,7 +161,6 @@ def collect_events(helper, ew):
 
     # Number of Events to return per call to the search API
     limit = 100  # Max number of results to return. Default is 100.
-    offset = 0
     new_checkpoint_time = None
 
     while True:
@@ -174,7 +172,7 @@ def collect_events(helper, ew):
         query_params = build_query_params(helper)
 
         # Search criteria - retrieve all audit events since the checkpoint time, sorted by created date.
-        search_payload = build_search_payload(helper, limit, offset, checkpoint_time)
+        search_payload = build_search_payload(helper, limit, checkpoint_time)
 
         # Initiate request
         response = get_nerm_audit_events_response(helper, nerm_audit_events_url, headers, query_params, search_payload,

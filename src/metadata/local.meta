@@ -1,7 +1,7 @@
 [props/sailpoint_nerm]
 owner = eric.panico
-version = 9.3.1
-modtime = 1729089170.932622000
+version = 9.3.2
+modtime = 1731542819.154788000
 
 [props/source%3A%3A...ta-sailpoint-nerm-auditevent-add-on%2A.log%2A]
 owner = eric.panico
@@ -26,18 +26,23 @@ modtime = 1730930439.656728000
 [inputs/sailpoint_nerm_auditevent%3A%2F%2Fsailpoint_nerm]
 owner = eric.panico
 version = 9.3.1
-modtime = 1730993677.528594000
+modtime = 1730996928.780915000
 
 [passwords/credential%3A__REST_CREDENTIAL__%23TA-sailpoint-nerm-auditevent-add-on%23configs%2Fconf-ta_sailpoint_nerm_auditevent_add_on_settings%3Aadditional_parameters%60%60splunk_cred_sep%60%601%3A]
 owner = eric.panico
-version = 9.3.1
-modtime = 1730993665.133640000
+version = 9.3.2
+modtime = 1731531577.294404000
 
 [passwords/credential%3A__REST_CREDENTIAL__%23TA-sailpoint-nerm-auditevent-add-on%23configs%2Fconf-ta_sailpoint_nerm_auditevent_add_on_settings%3Aadditional_parameters%60%60splunk_cred_sep%60%602%3A]
 owner = eric.panico
-version = 9.3.1
-modtime = 1730993665.158933000
+version = 9.3.2
+modtime = 1731531577.352703000
 
 [ta_sailpoint_nerm_auditevent_add_on_settings/additional_parameters]
-version = 9.3.1
-modtime = 1730993665.175752000
+version = 9.3.2
+modtime = 1731531577.368111000
+
+[indexes/nerm_index]
+owner = spadmin2024
+version = 9.3.2
+modtime = 1731541998.072885000

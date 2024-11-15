@@ -24,6 +24,70 @@
     ],
     "components": {
         "schemas": {
+            "proxy": {
+                "type": "object",
+                "properties": {
+                    "proxy_enabled": {
+                        "type": "string"
+                    },
+                    "proxy_type": {
+                        "type": "string",
+                        "enum": [
+                            "http",
+                            "socks4",
+                            "socks5"
+                        ]
+                    },
+                    "proxy_url": {
+                        "type": "string"
+                    },
+                    "proxy_port": {
+                        "type": "string"
+                    },
+                    "proxy_username": {
+                        "type": "string"
+                    },
+                    "proxy_password": {
+                        "type": "string",
+                        "format": "password"
+                    },
+                    "proxy_rdns": {
+                        "type": "string"
+                    }
+                }
+            },
+            "proxy_without_name": {
+                "type": "object",
+                "properties": {
+                    "proxy_enabled": {
+                        "type": "string"
+                    },
+                    "proxy_type": {
+                        "type": "string",
+                        "enum": [
+                            "http",
+                            "socks4",
+                            "socks5"
+                        ]
+                    },
+                    "proxy_url": {
+                        "type": "string"
+                    },
+                    "proxy_port": {
+                        "type": "string"
+                    },
+                    "proxy_username": {
+                        "type": "string"
+                    },
+                    "proxy_password": {
+                        "type": "string",
+                        "format": "password"
+                    },
+                    "proxy_rdns": {
+                        "type": "string"
+                    }
+                }
+            },
             "logging": {
                 "type": "object",
                 "properties": {
@@ -57,7 +121,7 @@
             "additional_parameters": {
                 "type": "object",
                 "properties": {
-                    "organization_name": {
+                    "tenant_url": {
                         "type": "string"
                     },
                     "api_key": {
@@ -69,7 +133,7 @@
             "additional_parameters_without_name": {
                 "type": "object",
                 "properties": {
-                    "organization_name": {
+                    "tenant_url": {
                         "type": "string"
                     },
                     "api_key": {
@@ -90,12 +154,8 @@
                     "index": {
                         "type": "string"
                     },
-                    "organization_name": {
+                    "tenant_name": {
                         "type": "string"
-                    },
-                    "api_key": {
-                        "type": "string",
-                        "format": "password"
                     },
                     "disabled": {
                         "type": "string",
@@ -115,12 +175,8 @@
                     "index": {
                         "type": "string"
                     },
-                    "organization_name": {
+                    "tenant_name": {
                         "type": "string"
-                    },
-                    "api_key": {
-                        "type": "string",
-                        "format": "password"
                     },
                     "disabled": {
                         "type": "string",
@@ -143,12 +199,8 @@
                     "index": {
                         "type": "string"
                     },
-                    "organization_name": {
+                    "tenant_name": {
                         "type": "string"
-                    },
-                    "api_key": {
-                        "type": "string",
-                        "format": "password"
                     }
                 }
             }
@@ -161,6 +213,97 @@
         }
     },
     "paths": {
+        "/TA_sailpoint_nerm_auditevent_add_on_settings/proxy": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Get list of items for proxy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/proxy_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Get list of items for proxy",
+                "deprecated": false
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Create item in proxy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "entry": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "content": {
+                                                        "$ref": "#/components/schemas/proxy_without_name"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "description": "Create item in proxy",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/proxy"
+                            }
+                        }
+                    },
+                    "required": false
+                },
+                "deprecated": false
+            },
+            "parameters": [
+                {
+                    "name": "output_mode",
+                    "in": "query",
+                    "required": true,
+                    "description": "Output mode",
+                    "schema": {
+                        "type": "string",
+                        "enum": [
+                            "json"
+                        ],
+                        "default": "json"
+                    }
+                }
+            ]
+        },
         "/TA_sailpoint_nerm_auditevent_add_on_settings/logging": {
             "get": {
                 "responses": {

@@ -46,13 +46,9 @@ class ModInputsailpoint_nerm_auditevent(modinput_wrapper.base_modinput.BaseModIn
         For customized inputs, hard code the arguments here to hide argument detail from users.
         For other input types, arguments should be get from input_module. Defining new input types could be easier.
         """
-        scheme.add_argument(smi.Argument("organization_name", title="Organization Name",
-                                         description="Enter the name of the organization",
-                                         required_on_create=False,
-                                         required_on_edit=False))
-        scheme.add_argument(smi.Argument("api_key", title="API Key",
-                                         description="Enter your SailPoint NERM API key",
-                                         required_on_create=False,
+        scheme.add_argument(smi.Argument("tenant_name", title="Tenant Name",
+                                         description="Enter name of the tenant.",
+                                         required_on_create=True,
                                          required_on_edit=False))
         return scheme
 

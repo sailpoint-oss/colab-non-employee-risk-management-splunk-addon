@@ -34,24 +34,11 @@ fields = [
         )
     ), 
     field.RestField(
-        'organization_name',
-        required=False,
+        'global_account',
+        required=True,
         encrypted=False,
         default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
-    ), 
-    field.RestField(
-        'api_key',
-        required=False,
-        encrypted=True,
-        default=None,
-        validator=validator.String(
-            min_len=0, 
-            max_len=8192, 
-        )
+        validator=None
     ), 
 
     field.RestField(

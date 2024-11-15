@@ -34,7 +34,7 @@ Information on how to generate token is (https://documentation.sailpoint.com/ne-
 
 
 ## Audit Events:
-NERM Query for Audit events endpoint provides a search engine for Audit Events by optionally combining subject_type, type, and subject_id to narrow down the audit events.
+NERM Query for Audit events endpoint provides a search engine for Audit Events by **optionally** combining subject_type, type, and subject_id to narrow down the audit events.
 
 ### Splunk Enterprise/Splunk Cloud:
 
@@ -42,14 +42,16 @@ An event is a single piece of data in Splunk software, similar to a record in a 
 //screenshot to be added
 
 ### Source Type
-Source type is a default field that identifies the data structure of an event. A source type determines how Splunk Enterprise formats the data during the indexing process. Splunk Enterprise comes with a large set of predefined source types, and it assigns a source type to your data. You can override this assignment by assigning an existing source type or creating a custom source type. This add-on creates a custom source type 'sailpoint_nerm_auditevent'. The Splunk indexer identifies and adds the source type field when it indexes the data. As a result, each indexed event has a source type field. A Splunk admin can use the source type field in searches to find all data of a certain type (as opposed to all data from a certain source). The 'sailpoint_nerm_auditevent' source type is straightforward, as seen here:
-//screenshot to be added
+Source type is a default field that identifies the data structure of an event. A source type determines how Splunk Enterprise formats the data during the indexing process. Splunk Enterprise comes with a large set of predefined source types, and it assigns a source type to your data. You can override this assignment by assigning an existing source type or creating a custom source type. This add-on creates a custom source type 'sailpoint_nerm_auditevent'. The Splunk indexer identifies and adds the source type field when it indexes the data. As a result, each indexed event has a source type field. A Splunk admin can use the source type field in searches to find all data of a certain type (as opposed to all data from a certain source). 
+
 
 ### Data Input
-A Splunk deployment typically has three processing tiers: data input, indexing, and search management. A specific input consumes a raw data stream from its source and annotates each block with some additional metadata (host, source, and source type). Splunk does not look at the contents of the data stream at this point, so the metadata is consistent across all data in a single stream. After raw stream input, the next thing that occurs is the data is parsed into individual events. The ISC add-on creates the events as part of the included scripts. Single data-input exists for the given sourcetype with the ability for the data input to specify execution interval. The ISC add-on defaults the data input interval to 300 seconds (5 minutes).
-//screenshot to be added
+A Splunk deployment typically has three processing tiers: data input, indexing, and search management. A specific input consumes a raw data stream from its source and annotates each block with some additional metadata (host, source, and source type). Splunk does not look at the contents of the data stream at this point, so the metadata is consistent across all data in a single stream. After raw stream input, the next thing that occurs is the data is parsed into individual events. This add-on creates the events as part of the included scripts. Single data-input exists for the given sourcetype with the ability for the data input to specify execution interval. Recommended data input interval is 300 seconds (5 minutes).
 
-This input executes a Python script to make HTTP requests to the correct NERM api endpoints, and gather the audit events. In order for this to work, NERM Query for Audit events input much be configured to supply the organization name and API Token Details on the setup and configuration of the data inputs can be found in the 'Setup' section of this document.
+<img width="802" alt="Screenshot 2024-11-14 at 5 50 52 PM" src="https://github.com/user-attachments/assets/3a59a7df-dfe3-47e9-8961-23001c4682fd">
+
+
+This input executes a Python script to make HTTP requests to the correct NERM api endpoints, and gather the audit events. In order for this to work, NERM Query for Audit events input much be configured to supply the Tenant Name, Tenant URL and API Key on the setup and configuration page of the add-on.
 
 
 
@@ -94,19 +96,11 @@ There are specific requirements and processes you need to follow due to the mana
 * Log in to your splunk instance
 * Navigate to **Apps> Manage Apps**
 * Click on **Install app from file**
-* Upload the .spl file from the release package
-* Click **Upload** amd restart Splunk if prompted
-
-
-### Method 2: Install via Command Line
-* Copy the .spl file to your splunk server
-* Run the following command
-    `splunk install app <add-on-name>.spl`
-* Restart the Splunk instance
-    'splunk restart`
+* Upload the .tar.gz file from **/build** directory
+* Click **Upload** and restart Splunk if prompted
   
 
-### Method 3: Install on Splunk Cloud
+### Method 2: Install on Splunk Cloud
 * Navigate to **Splunk Cloud Admin Console > App > Browse More Apps**
 * Search for the add-on and click **Install**
 * Submit a request to Splunk support to get app cloud certified for installation
@@ -117,18 +111,43 @@ There are specific requirements and processes you need to follow due to the mana
 
 ### Step 1: Configure Data Inputs
 
-* Go to **Settings > Data Inputs**
-* Select the data input
-   // Add screenshot
-* Click **Add New** and fill in the required details.
-   // Add screenshot
+* Navigate to **Configuration** tab
+
+<img width="1710" alt="Screenshot 2024-11-14 at 6 02 02 PM" src="https://github.com/user-attachments/assets/bccb5970-8b83-4623-b4de-d42deb0948a1">
 
 
+* Go to **Add-on Settings**. Fill in the details and click **'Save'**
+
+<img width="1710" alt="Screenshot 2024-11-14 at 6 02 12 PM" src="https://github.com/user-attachments/assets/91b9bf39-c441-4435-b83f-7a4d8040b808">
+
+
+     - Tenant URL: Enter complete url of the tenant.
+     - API Key: Enter SailPoint NERM API Key.
+
+* Navigate to **Inputs** tab and click on **'Create New Input'**
+
+<img width="1710" alt="Screenshot 2024-11-14 at 6 01 00 PM" src="https://github.com/user-attachments/assets/b7e2ea39-82c6-4dbe-a678-1afdcf87e86e">
+
+   
+* Fill in the required details and click **'Add'**
+
+   <img width="802" alt="Screenshot 2024-11-14 at 5 50 52 PM" src="https://github.com/user-attachments/assets/e5f3c248-7878-4407-960c-bc872b5b07ef">
+
+    - Name: Enter unique name for the data input.
+    - Interval: Enter execution interval. Recommendation is 300 seconds (5 minutes).
+    - Index: Enter unique index.
+    - Tenant Name: Enter name of the tenant.
+
+   
 
 ## Usage:
 
 ##### Basic Search
  `index=<your_index> sourcetype=<sourcetype_name>`
+
+ <img width="548" alt="Screenshot 2024-11-14 at 7 15 19 PM" src="https://github.com/user-attachments/assets/f6c45a6e-d907-4fe1-b1a4-b1d228982d7e">
+
+
 
 ##### Search with Extracted Fields:
  `index=<your_index> sourcetype=<sourcetype_name>`
@@ -160,13 +179,32 @@ This add-on is created using Splunk Add-on builder, which provides a streamlined
 
 * Clone the repository
 
-* Import the .tgz file in Splunk Add-on Builder.
-  // Add the screenshot
+* Click on **Import Project**, select the .tgz file in Splunk Add-on Builder.
 
-* Testing the add-on
-  Use the Test feature in add-on builder to validate the changes.
+  <img width="1710" alt="Screenshot 2024-11-14 at 6 50 17 PM" src="https://github.com/user-attachments/assets/4c4affaa-9a2a-4cda-babb-4162d0ce260a">
 
 
+* Verfiy that the SailPoint NERM AuditEvent Add-on now appears on main Splunk Dashboard
+
+<img width="270" alt="Screenshot 2024-11-14 at 10 33 36 AM" src="https://github.com/user-attachments/assets/e99e6159-c8f5-440f-b433-2a6f761e6006">
+
+
+* Edit and Test the add-on
+  - Click on the Add-on tile. 
+  - Click **'Configure Data Collection'** tab.
+  - Click **'Edit'** under **'Actions'**
+  - Click **'Next'** button on the top and edit the code.
+  - Edit the code in this editor. Use **'Test'** to validate the changes before saving. 
+    
+     <img width="1710" alt="Screenshot 2024-11-14 at 6 58 58 PM" src="https://github.com/user-attachments/assets/a0186619-0bac-4afb-b3c7-642381466d69">
+
+  - Click **'Save' >> 'Finish'** to save the changes to source type.
+
+
+## Validate and Package
+
+ Follow instructions : [Validate and Package Add-on using Add-on builder](https://docs.splunk.com/Documentation/AddonBuilder/4.3.0/UserGuide/Validate#:~:text=To%20validate%20your%20add%2Don,and%20and%20display%20the%20results)
+ 
 
 ## License:
 

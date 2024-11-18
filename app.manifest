@@ -1,10 +1,10 @@
 {
   "schemaVersion": "2.0.0",
   "info": {
-    "title": "SailPoint NERM AuditEvent Add-on",
+    "title": "SailPoint Non-employee Risk Management AuditEvent Add-on",
     "id": {
       "group": null,
-      "name": "TA-sailpoint-nerm-auditevent-add-on",
+      "name": "TA-sailpoint-non-employee-risk-management-auditevent-add-on",
       "version": "1.0.0"
     },
     "author": [
@@ -15,7 +15,7 @@
       }
     ],
     "releaseDate": null,
-    "description": "Version 1.0.0 of SailPoint NERM AuditEvent Add-on.",
+    "description": "Version 1.0.0 of SailPoint Non-employee Risk Management AuditEvent Add-on.",
     "classification": {
       "intendedAudience": null,
       "categories": [],

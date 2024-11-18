@@ -1,8 +1,28 @@
 
 []
-access = read : [ * ], write : [ admin ]
+access = read : [ * ], write : [ * ]
 export = system
+owner = nobody
 
 [views]
-access = read : [ * ], write : [ admin ]
-export = none
+access = read : [ * ], write : [ * ]
+export = system
+owner = nobody
+
+[props/sailpoint_non-employee_risk_management]
+export = system
+owner = nobody
+version = 9.3.2
+modtime = 1731698359.580466000
+
+[props/source%3A%3A...ta-sailpoint-non-employee-risk-management-auditevent-add-on%2A.log%2A]
+export = system
+owner = nobody
+version = 9.3.2
+modtime = 1731692080.667974000
+
+[props/source%3A%3A...ta_sailpoint_non_employee_risk_management_auditevent_add_on%2A.log%2A]
+export = system
+owner = nobody
+version = 9.3.2
+modtime = 1731692081.112016000

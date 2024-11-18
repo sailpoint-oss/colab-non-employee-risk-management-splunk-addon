@@ -1,9 +1,9 @@
 {
     "meta": {
-        "name": "TA-sailpoint-nerm-auditevent-add-on",
-        "displayName": "SailPoint NERM AuditEvent Add-on",
+        "name": "TA-sailpoint-non-employee-risk-management-auditevent-add-on",
+        "displayName": "SailPoint Non-employee Risk Management AuditEvent AuditEvent Add-on",
         "version": "1.0.0",
-        "restRoot": "TA_sailpoint_nerm_auditevent_add_on",
+        "restRoot": "TA_sailpoint_non_employee_risk_management_auditevent_add_on",
         "_uccVersion": "5.39.0",
         "schemaVersion": "0.0.3"
     },
@@ -153,7 +153,7 @@
                             "field": "tenant_url",
                             "label": "Tenant URL",
                             "type": "text",
-                            "help": "Enter url of the tenant.",
+                            "help": "Enter url of Non-employee Risk Management tenant.",
                             "required": true,
                             "defaultValue": "",
                             "validators": [
@@ -169,7 +169,7 @@
                             "field": "api_key",
                             "label": "API Key",
                             "type": "text",
-                            "help": "Enter SailPoint NERM API Key.",
+                            "help": "Enter SailPoint Non-employee Risk Management API key.",
                             "required": true,
                             "defaultValue": "",
                             "encrypted": true,
@@ -239,8 +239,8 @@
             },
             "services": [
                 {
-                    "name": "sailpoint_nerm_auditevent",
-                    "title": "SailPoint NERM AuditEvent",
+                    "name": "sailpoint_non_employee_risk_management_auditevent",
+                    "title": "SailPoint Non-employee Risk Management AuditEvent",
                     "entity": [
                         {
                             "field": "name",
@@ -299,7 +299,7 @@
                         {
                             "field": "tenant_name",
                             "label": "Tenant Name",
-                            "help": "Enter name of the tenant.",
+                            "help": "Enter name of Non-employee Risk Management tenant.",
                             "required": true,
                             "type": "text",
                             "validators": [

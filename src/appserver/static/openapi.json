@@ -1,16 +1,16 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "TA-sailpoint-nerm-auditevent-add-on",
+        "title": "TA-sailpoint-non-employee-risk-management-auditevent-add-on",
         "version": "1.0.0",
-        "description": "SailPoint NERM AuditEvent Add-on",
+        "description": "SailPoint Non-employee Risk Management AuditEvent AuditEvent Add-on",
         "contact": {
             "name": "SailPoint Technologies"
         }
     },
     "servers": [
         {
-            "url": "https://{domain}:{port}/servicesNS/-/TA-sailpoint-nerm-auditevent-add-on",
+            "url": "https://{domain}:{port}/servicesNS/-/TA-sailpoint-non-employee-risk-management-auditevent-add-on",
             "variables": {
                 "domain": {
                     "default": "localhost"
@@ -142,7 +142,7 @@
                     }
                 }
             },
-            "sailpoint_nerm_auditevent": {
+            "sailpoint_non_employee_risk_management_auditevent": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -166,7 +166,7 @@
                     }
                 }
             },
-            "sailpoint_nerm_auditevent_without_name": {
+            "sailpoint_non_employee_risk_management_auditevent_without_name": {
                 "type": "object",
                 "properties": {
                     "interval": {
@@ -187,7 +187,7 @@
                     }
                 }
             },
-            "sailpoint_nerm_auditevent_without_disabled": {
+            "sailpoint_non_employee_risk_management_auditevent_without_disabled": {
                 "type": "object",
                 "properties": {
                     "name": {
@@ -213,7 +213,7 @@
         }
     },
     "paths": {
-        "/TA_sailpoint_nerm_auditevent_add_on_settings/proxy": {
+        "/TA_sailpoint_non_employee_risk_management_auditevent_add_on_settings/proxy": {
             "get": {
                 "responses": {
                     "200": {
@@ -304,7 +304,7 @@
                 }
             ]
         },
-        "/TA_sailpoint_nerm_auditevent_add_on_settings/logging": {
+        "/TA_sailpoint_non_employee_risk_management_auditevent_add_on_settings/logging": {
             "get": {
                 "responses": {
                     "200": {
@@ -395,7 +395,7 @@
                 }
             ]
         },
-        "/TA_sailpoint_nerm_auditevent_add_on_settings/additional_parameters": {
+        "/TA_sailpoint_non_employee_risk_management_auditevent_add_on_settings/additional_parameters": {
             "get": {
                 "responses": {
                     "200": {
@@ -486,11 +486,11 @@
                 }
             ]
         },
-        "/TA_sailpoint_nerm_auditevent_add_on_sailpoint_nerm_auditevent": {
+        "/TA_sailpoint_non_employee_risk_management_auditevent_add_on_sailpoint_non_employee_risk_management_auditevent": {
             "get": {
                 "responses": {
                     "200": {
-                        "description": "Get list of items for sailpoint_nerm_auditevent",
+                        "description": "Get list of items for sailpoint_non_employee_risk_management_auditevent",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -505,7 +505,7 @@
                                                         "type": "string"
                                                     },
                                                     "content": {
-                                                        "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_name"
+                                                        "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_name"
                                                     }
                                                 }
                                             }
@@ -516,13 +516,13 @@
                         }
                     }
                 },
-                "description": "Get list of items for sailpoint_nerm_auditevent",
+                "description": "Get list of items for sailpoint_non_employee_risk_management_auditevent",
                 "deprecated": false
             },
             "post": {
                 "responses": {
                     "200": {
-                        "description": "Create item in sailpoint_nerm_auditevent",
+                        "description": "Create item in sailpoint_non_employee_risk_management_auditevent",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -537,7 +537,7 @@
                                                         "type": "string"
                                                     },
                                                     "content": {
-                                                        "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_name"
+                                                        "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_name"
                                                     }
                                                 }
                                             }
@@ -548,12 +548,12 @@
                         }
                     }
                 },
-                "description": "Create item in sailpoint_nerm_auditevent",
+                "description": "Create item in sailpoint_non_employee_risk_management_auditevent",
                 "requestBody": {
                     "content": {
                         "application/x-www-form-urlencoded": {
                             "schema": {
-                                "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_disabled"
+                                "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_disabled"
                             }
                         }
                     },
@@ -577,11 +577,11 @@
                 }
             ]
         },
-        "/TA_sailpoint_nerm_auditevent_add_on_sailpoint_nerm_auditevent/{name}": {
+        "/TA_sailpoint_non_employee_risk_management_auditevent_add_on_sailpoint_non_employee_risk_management_auditevent/{name}": {
             "get": {
                 "responses": {
                     "200": {
-                        "description": "Get sailpoint_nerm_auditevent item details",
+                        "description": "Get sailpoint_non_employee_risk_management_auditevent item details",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -596,7 +596,7 @@
                                                         "type": "string"
                                                     },
                                                     "content": {
-                                                        "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_name"
+                                                        "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_name"
                                                     }
                                                 }
                                             }
@@ -607,13 +607,13 @@
                         }
                     }
                 },
-                "description": "Get sailpoint_nerm_auditevent item details",
+                "description": "Get sailpoint_non_employee_risk_management_auditevent item details",
                 "deprecated": false
             },
             "post": {
                 "responses": {
                     "200": {
-                        "description": "Update sailpoint_nerm_auditevent item",
+                        "description": "Update sailpoint_non_employee_risk_management_auditevent item",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -628,7 +628,7 @@
                                                         "type": "string"
                                                     },
                                                     "content": {
-                                                        "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_name"
+                                                        "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_name"
                                                     }
                                                 }
                                             }
@@ -639,12 +639,12 @@
                         }
                     }
                 },
-                "description": "Update sailpoint_nerm_auditevent item",
+                "description": "Update sailpoint_non_employee_risk_management_auditevent item",
                 "requestBody": {
                     "content": {
                         "application/x-www-form-urlencoded": {
                             "schema": {
-                                "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_name"
+                                "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_name"
                             }
                         }
                     },
@@ -655,7 +655,7 @@
             "delete": {
                 "responses": {
                     "200": {
-                        "description": "Delete sailpoint_nerm_auditevent item",
+                        "description": "Delete sailpoint_non_employee_risk_management_auditevent item",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -670,7 +670,7 @@
                                                         "type": "string"
                                                     },
                                                     "content": {
-                                                        "$ref": "#/components/schemas/sailpoint_nerm_auditevent_without_name"
+                                                        "$ref": "#/components/schemas/sailpoint_non_employee_risk_management_auditevent_without_name"
                                                     }
                                                 }
                                             }
@@ -681,7 +681,7 @@
                         }
                     }
                 },
-                "description": "Delete sailpoint_nerm_auditevent item",
+                "description": "Delete sailpoint_non_employee_risk_management_auditevent item",
                 "deprecated": false
             },
             "parameters": [

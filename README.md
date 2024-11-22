@@ -29,7 +29,7 @@ For more information about the /search API used by the add-on, see https://devel
 
 
 ## Authentication:
-Non-employee Risk Management uses bearer tokens to allow customers to authenticate to Non-employee Risk Management() API endpoints.
+Non-employee Risk Management uses bearer tokens to allow customers to authenticate to Non-employee Risk Management API endpoints.
 Information on how to generate token is (https://documentation.sailpoint.com/ne-admin/help/setup/api.html)
 
 

@@ -1,9 +1,9 @@
 # Non-employee Risk Management Splunk Add-on
 
-The SailPoint Non-employee Risk Management AuditEvent Add-on is an open-source splunk add-on built using the Splunk Add-on builder. This add-on helps ingest, parse and normalize data from Non-employee Risk Management(NERM) API into Splunk allowing users to easily search and analyze their data.
+The SailPoint Non-employee Risk Management AuditEvent Add-on is an open-source splunk add-on built using the Splunk Add-on builder. This add-on helps ingest, parse and normalize data from Non-employee Risk Management API into Splunk allowing users to easily search and analyze their data.
 It leverages Splunk's data onboarding framework providing a seamless experience for integrating data into Splunk Enterprise and Splunk Cloud.
-The SailPoint NERM(Non-Employee Risk Management) API is a RESTful API designed to manage and automate identity governance processes for non-employee identities within SailPoint platform. 
-Non-Employee Risk Management (NERM) is an add-on to Identity Security Cloud (ISC) that helps organizations track non-employees such as contractors, partners, and vendors, and their lifecycles within the organization.
+The SailPoint Non-Employee Risk Management API is a RESTful API designed to manage and automate identity governance processes for non-employee identities within SailPoint platform. 
+Non-Employee Risk Management is an add-on to Identity Security Cloud (ISC) that helps organizations track non-employees such as contractors, partners, and vendors, and their lifecycles within the organization.
 
 For more information about the /search API used by the add-on, see https://developer.sailpoint.com/docs/api/nerm/v1/search/.
 
@@ -29,12 +29,12 @@ For more information about the /search API used by the add-on, see https://devel
 
 
 ## Authentication:
-Non-employee Risk Management(NERM) uses bearer tokens to allow customers to authenticate to Non-employee Risk Management() API endpoints.
+Non-employee Risk Management uses bearer tokens to allow customers to authenticate to Non-employee Risk Management() API endpoints.
 Information on how to generate token is (https://documentation.sailpoint.com/ne-admin/help/setup/api.html)
 
 
 ## Audit Events:
-Non-employee Risk Management(NERM) Query for Audit events endpoint provides a search engine for Audit Events by **optionally** combining subject_type, type, and subject_id to narrow down the audit events.
+Non-employee Risk Management Query for Audit events endpoint provides a search engine for Audit Events by **optionally** combining subject_type, type, and subject_id to narrow down the audit events.
 
 
 ### Splunk Enterprise/Splunk Cloud:
@@ -53,7 +53,7 @@ A Splunk deployment typically has three processing tiers: data input, indexing, 
 
 
 
-This input executes a Python script to make HTTP requests to the correct Non-employee Risk Management(NERM) api endpoints, and gather the audit events. In order for this to work, Non-employee Risk Management(NERM) Query for Audit events input much be configured to supply the Tenant Name, Tenant URL and API Key on the setup and configuration page of the add-on.
+This input executes a Python script to make HTTP requests to the correct Non-employee Risk Management api endpoints, and gather the audit events. In order for this to work, Non-employee Risk Management Query for Audit events input much be configured to supply the Tenant Name, Tenant URL and API Key on the setup and configuration page of the add-on.
 
 
 

@@ -1,9 +1,9 @@
 # Non-employee Risk Management Splunk Add-on
 
-The SailPoint Non-employee Risk Management AuditEvent Add-on is an open-source splunk add-on built using the Splunk Add-on builder. This add-on helps ingest, parse and normalize data from Non-employee Risk Management(NERM) API into Splunk allowing users to easily search and analyze their data.
+The SailPoint Non-employee Risk Management AuditEvent Add-on is an open-source splunk add-on built using the Splunk Add-on builder. This add-on helps ingest, parse and normalize data from Non-employee Risk Management API into Splunk allowing users to easily search and analyze their data.
 It leverages Splunk's data onboarding framework providing a seamless experience for integrating data into Splunk Enterprise and Splunk Cloud.
-The SailPoint NERM(Non-Employee Risk Management) API is a RESTful API designed to manage and automate identity governance processes for non-employee identities within SailPoint platform. 
-Non-Employee Risk Management (NERM) is an add-on to Identity Security Cloud (ISC) that helps organizations track non-employees such as contractors, partners, and vendors, and their lifecycles within the organization.
+The SailPoint Non-Employee Risk Management API is a RESTful API designed to manage and automate identity governance processes for non-employee identities within SailPoint platform. 
+Non-Employee Risk Management is an add-on to Identity Security Cloud (ISC) that helps organizations track non-employees such as contractors, partners, and vendors, and their lifecycles within the organization.
 
 For more information about the /search API used by the add-on, see https://developer.sailpoint.com/docs/api/nerm/v1/search/.
 
@@ -29,12 +29,12 @@ For more information about the /search API used by the add-on, see https://devel
 
 
 ## Authentication:
-Non-employee Risk Management(NERM) uses bearer tokens to allow customers to authenticate to Non-employee Risk Management(NERM) API endpoints.
+Non-employee Risk Management uses bearer tokens to allow customers to authenticate to Non-employee Risk Management() API endpoints.
 Information on how to generate token is (https://documentation.sailpoint.com/ne-admin/help/setup/api.html)
 
 
 ## Audit Events:
-Non-employee Risk Management(NERM) Query for Audit events endpoint provides a search engine for Audit Events by **optionally** combining subject_type, type, and subject_id to narrow down the audit events.
+Non-employee Risk Management Query for Audit events endpoint provides a search engine for Audit Events by **optionally** combining subject_type, type, and subject_id to narrow down the audit events.
 
 
 ### Splunk Enterprise/Splunk Cloud:
@@ -43,7 +43,7 @@ An event is a single piece of data in Splunk software, similar to a record in a 
 
 
 ### Source Type
-Source type is a default field that identifies the data structure of an event. A source type determines how Splunk Enterprise formats the data during the indexing process. Splunk Enterprise comes with a large set of predefined source types, and it assigns a source type to your data. You can override this assignment by assigning an existing source type or creating a custom source type. This add-on creates a custom source type 'sailpoint_nerm_auditevent'. The Splunk indexer identifies and adds the source type field when it indexes the data. As a result, each indexed event has a source type field. A Splunk admin can use the source type field in searches to find all data of a certain type (as opposed to all data from a certain source). 
+Source type is a default field that identifies the data structure of an event. A source type determines how Splunk Enterprise formats the data during the indexing process. Splunk Enterprise comes with a large set of predefined source types, and it assigns a source type to your data. You can override this assignment by assigning an existing source type or creating a custom source type. This add-on creates a custom source type 'sailpoint_non-employee_risk_management'. The Splunk indexer identifies and adds the source type field when it indexes the data. As a result, each indexed event has a source type field. A Splunk admin can use the source type field in searches to find all data of a certain type (as opposed to all data from a certain source). 
 
 
 ### Data Input
@@ -53,7 +53,7 @@ A Splunk deployment typically has three processing tiers: data input, indexing, 
 
 
 
-This input executes a Python script to make HTTP requests to the correct Non-employee Risk Management(NERM) api endpoints, and gather the audit events. In order for this to work, Non-employee Risk Management(NERM) Query for Audit events input much be configured to supply the Tenant Name, Tenant URL and API Key on the setup and configuration page of the add-on.
+This input executes a Python script to make HTTP requests to the correct Non-employee Risk Management api endpoints, and gather the audit events. In order for this to work, Non-employee Risk Management Query for Audit events input much be configured to supply the Tenant Name, Tenant URL and API Key on the setup and configuration page of the add-on.
 
 
 
@@ -187,7 +187,7 @@ This add-on is created using Splunk Add-on builder, which provides a streamlined
 
 * Click on **Import Project**, select the .tgz file in Splunk Add-on Builder.
 
-* Verfiy that the SailPoint NERM AuditEvent Add-on now appears on main Splunk Dashboard
+* Verfiy that the SailPoint Non-employee Risk Management AuditEvent Add-on now appears on main Splunk Dashboard
 
 <img width="269" alt="Screenshot 2024-11-15 at 12 10 13 PM" src="https://github.com/user-attachments/assets/2b33d042-b035-437c-8e21-ca8749b5d61f">
 
@@ -223,11 +223,3 @@ For any issues or questions, please reach out via:
 
 - GitHub Issues:
 - Splunk community:
-
-
-
-
-
-
-
-

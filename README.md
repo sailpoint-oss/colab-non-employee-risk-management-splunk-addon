@@ -29,7 +29,7 @@ For more information about the /search API used by the add-on, see https://devel
 
 
 ## Authentication:
-Non-employee Risk Management(NERM) uses bearer tokens to allow customers to authenticate to Non-employee Risk Management(NERM) API endpoints.
+Non-employee Risk Management(NERM) uses bearer tokens to allow customers to authenticate to Non-employee Risk Management() API endpoints.
 Information on how to generate token is (https://documentation.sailpoint.com/ne-admin/help/setup/api.html)
 
 
@@ -43,7 +43,7 @@ An event is a single piece of data in Splunk software, similar to a record in a 
 
 
 ### Source Type
-Source type is a default field that identifies the data structure of an event. A source type determines how Splunk Enterprise formats the data during the indexing process. Splunk Enterprise comes with a large set of predefined source types, and it assigns a source type to your data. You can override this assignment by assigning an existing source type or creating a custom source type. This add-on creates a custom source type 'sailpoint_nerm_auditevent'. The Splunk indexer identifies and adds the source type field when it indexes the data. As a result, each indexed event has a source type field. A Splunk admin can use the source type field in searches to find all data of a certain type (as opposed to all data from a certain source). 
+Source type is a default field that identifies the data structure of an event. A source type determines how Splunk Enterprise formats the data during the indexing process. Splunk Enterprise comes with a large set of predefined source types, and it assigns a source type to your data. You can override this assignment by assigning an existing source type or creating a custom source type. This add-on creates a custom source type 'sailpoint_non-employee_risk_management'. The Splunk indexer identifies and adds the source type field when it indexes the data. As a result, each indexed event has a source type field. A Splunk admin can use the source type field in searches to find all data of a certain type (as opposed to all data from a certain source). 
 
 
 ### Data Input
@@ -187,7 +187,7 @@ This add-on is created using Splunk Add-on builder, which provides a streamlined
 
 * Click on **Import Project**, select the .tgz file in Splunk Add-on Builder.
 
-* Verfiy that the SailPoint NERM AuditEvent Add-on now appears on main Splunk Dashboard
+* Verfiy that the SailPoint Non-employee Risk Management AuditEvent Add-on now appears on main Splunk Dashboard
 
 <img width="269" alt="Screenshot 2024-11-15 at 12 10 13 PM" src="https://github.com/user-attachments/assets/2b33d042-b035-437c-8e21-ca8749b5d61f">
 

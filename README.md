@@ -223,11 +223,3 @@ For any issues or questions, please reach out via:
 
 - GitHub Issues:
 - Splunk community:
-
-
-
-
-
-
-
-

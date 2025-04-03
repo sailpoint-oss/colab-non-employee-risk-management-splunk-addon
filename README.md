@@ -14,7 +14,7 @@
 
 # Non-Employee Risk Management Splunk Add-on
 
-[Explore the docs »](https://your-link-to-colab-topic-here)
+[Explore the docs »](https://developer.sailpoint.com/discuss/t/non-employee-risk-management-splunk-add-on/106887)
 The SailPoint Non-Employee Risk Management AuditEvent Add-on is an open-source splunk add-on built using the Splunk Add-on builder. This add-on helps ingest, parse and normalize data from Non-Employee Risk Management API into Splunk allowing users to easily search and analyze their data.
 It leverages Splunk's data onboarding framework providing a seamless experience for integrating data into Splunk Enterprise and Splunk Cloud.
 The SailPoint Non-Employee Risk Management API is a RESTful API designed to manage and automate identity governance processes for non-employee identities within SailPoint platform.

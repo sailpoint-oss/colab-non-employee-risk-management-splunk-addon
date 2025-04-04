@@ -4,22 +4,25 @@
 [![Contributor Shield][contributor-shield]][contributors-url]
 
 [discourse-shield]:https://img.shields.io/discourse/topics?label=Discuss%20This%20Tool&server=https%3A%2F%2Fdeveloper.sailpoint.com%2Fdiscuss
-[discourse-url]:https://developer.sailpoint.com/discuss/tag/workflows
-[issues-shield]:https://img.shields.io/github/issues/sailpoint-oss/repo-template?label=Issues
-[issues-url]:https://github.com/sailpoint-oss/repo-template/issues
-[release-shield]: https://img.shields.io/github/v/release/sailpoint-oss/repo-template?label=Current%20Release
-[release-url]:https://github.com/sailpoint-oss/repo-template/releases
+[discourse-url]:https://developer.sailpoint.com/discuss/t/non-employee-risk-management-splunk-add-on/106887
+[issues-shield]:https://img.shields.io/github/issues/sailpoint-oss/colab-non-employee-risk-management-splunk-addon?label=Issues
+[issues-url]:https://github.com/sailpoint-oss/colab-non-employee-risk-management-splunk-addon/issues
+[release-shield]: https://img.shields.io/github/v/release/sailpoint-oss/olab-non-employee-risk-management-splunk-addon?label=v1.0.0
+[release-url]:https://github.com/sailpoint-oss/colab-non-employee-risk-management-splunk-addon/releases/
 [contributor-shield]:https://img.shields.io/github/contributors/sailpoint-oss/repo-template?label=Contributors
-[contributors-url]:https://github.com/sailpoint-oss/repo-template/graphs/contributors
+[contributors-url]:https://github.com/sailpoint-oss/colab-non-employee-risk-management-splunk-addon/graphs/contributors
 
 # Non-Employee Risk Management Splunk Add-on
 
-[Explore the docs »](https://your-link-to-colab-topic-here)
-The SailPoint Non-Employee Risk Management AuditEvent Add-on is an open-source splunk add-on built using the Splunk Add-on builder. This add-on helps ingest, parse and normalize data from Non-Employee Risk Management API into Splunk allowing users to easily search and analyze their data.
-It leverages Splunk's data onboarding framework providing a seamless experience for integrating data into Splunk Enterprise and Splunk Cloud.
-The SailPoint Non-Employee Risk Management API is a RESTful API designed to manage and automate identity governance processes for non-employee identities within SailPoint platform.
-Non-Employee Risk Management is an add-on to Identity Security Cloud (ISC) that helps organizations track non-employees such as contractors, partners, and vendors, and their lifecycles within the organization.
+[Explore the docs »](https://developer.sailpoint.com/discuss/t/non-employee-risk-management-splunk-add-on/106887)
+## Overview
+The SailPoint Non-Employee Risk Management Splunk Add-on is an open-source integration built using the Splunk Add-on Builder. It allows organizations to collect, parse and normalize audit data from SailPoints Non-Employee Risk Management API directly into Splunk.
 
+Designed for security teams, this add-on provides visibility into non-employee identity governance by seamlessly ingesting SailPoint logs into Splunk’s search and analytics engine.
+
+It leverages Splunk’s onboarding framework to support both Splunk Enterprise and Splunk Cloud deployments, helping teams monitor access activity, audit events and compliance risks accross the non-employee identity lifecycle.
+
+For more information about the /search API used by the add-on Click here »
 [For more information about the /search API used by the add-on Click here »](https://developer.sailpoint.com/docs/api/nerm/v1/search/)
 
 [New to the CoLab? Click here »](https://developer.sailpoint.com/discuss/t/about-the-sailpoint-developer-community-colab/11230)
@@ -45,7 +48,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
 ## Discuss
-[Click Here](https://developer.sailpoint.com/dicuss/tag/{tagName}) to discuss this tool with other users.
+[Click Here](https://developer.sailpoint.com/discuss/t/non-employee-risk-management-splunk-add-on/106887) to discuss this tool with other users.
 
 ## Key Features:
   * Pre-built data inputs for easy ingestion with data source
